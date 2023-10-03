@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_notes/data/note.dart';
 import 'package:flutter_sticky_notes/data/note_manager.dart';
+import 'package:flutter_sticky_notes/page/note_edit_page.dart';
 
 class NoteListPage extends StatefulWidget {
   const NoteListPage({super.key});
@@ -29,11 +30,20 @@ class _NoteListPageState extends State<NoteListPage> {
         ),
         children: _buildCards(),
       ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: '새 노트',
+        onPressed: () {
+          Navigator.pushNamed(context, NoteEditPage.routeName).then((value) => setState(() {}));
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
   // notes 여러 개 반환
   List<Widget> _buildCards() {
+    print('note list : ');
+    print(NoteManager().listNotes());
     return NoteManager().listNotes().map((note) => _buildCard(note)).toList();
   }
 

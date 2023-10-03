@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_notes/data/note.dart';
-import 'package:flutter_sticky_notes/data/note_manager.dart';
+import 'package:flutter_sticky_notes/providers.dart';
 
 class NoteEditPage extends StatefulWidget {
   const NoteEditPage({super.key});
@@ -21,6 +21,7 @@ class _NoteEditPageState extends State<NoteEditPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: color,
       appBar: AppBar(
         title: const Text('노트 편집'),
         actions: [
@@ -37,7 +38,6 @@ class _NoteEditPageState extends State<NoteEditPage> {
         ],
       ),
       body: Container(
-        color: color,
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
           child: Column(
@@ -141,13 +141,15 @@ class _NoteEditPageState extends State<NoteEditPage> {
 
   void _saveNote() {
     if (bodyController.text.isNotEmpty) {
-      NoteManager().addNote(
-        Note(
-          bodyController.text,
-          title: titleController.text,
-          color: color,
-        ),
-      );
+      noteManager().addNote(Note(
+        bodyController.text,
+        title: titleController.text,
+        color: color,
+      ));
+      print('내용있음');
+      print(noteManager().listNotes());
+      // save 후 이전화면으로 돌아감
+      Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('노트를 입력하세요.'),
