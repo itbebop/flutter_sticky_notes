@@ -5,6 +5,8 @@ import 'package:flutter_sticky_notes/data/note_manager.dart';
 class NoteListPage extends StatefulWidget {
   const NoteListPage({super.key});
 
+  static const routeName = '/';
+
   @override
   State<NoteListPage> createState() => _NoteListPageState();
 }

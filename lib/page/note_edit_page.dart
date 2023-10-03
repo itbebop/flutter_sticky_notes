@@ -5,6 +5,8 @@ import 'package:flutter_sticky_notes/data/note_manager.dart';
 class NoteEditPage extends StatefulWidget {
   const NoteEditPage({super.key});
 
+  static const routeName = '/edit';
+
   @override
   State<NoteEditPage> createState() => _NoteEditPageState();
 }

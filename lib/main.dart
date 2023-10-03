@@ -18,7 +18,13 @@ class MyApp extends StatelessWidget {
         // 테마색상
         primarySwatch: Colors.teal,
       ),
-      home: const NoteListPage(),
+      // home: const NoteListPage(),
+      // initialRoute는 home과 같이 쓸 수 없음
+      initialRoute: NoteListPage.routeName,
+      routes: {
+        NoteListPage.routeName: (context) => const NoteListPage(),
+        NoteEditPage.routeName: (context) => const NoteEditPage(),
+      },
     );
   }
 }
