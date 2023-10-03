@@ -2,9 +2,7 @@ import 'package:flutter_sticky_notes/data/note.dart';
 
 class NoteManager {
   // ignore: prefer_final_fields
-  List<Note> _notes;
-
-  NoteManager() : _notes = [];
+  List<Note> _notes = [];
 
   void addNote(Note note) {
     _notes.add(note);
